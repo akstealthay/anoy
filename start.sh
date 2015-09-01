@@ -1,3 +1,5 @@
+#!/bin/bash
+
 #
 # Setup Phase
 #
@@ -7,14 +9,15 @@ echo "Setting up the execution environment"
 echo "Activating python virtual environment"
 source fric/bin/activate
 
-echo "Installing all required packages"
-pip install -r requirements.txt
+echo "Installing required python packages"
+pip install -r requirements.txt -q
 
 #
 # Execution Phase
 #
 
 echo "Starting up the app"
+python run.py
 
 #
 # Breakdown Phase
