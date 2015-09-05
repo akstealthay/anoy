@@ -7,10 +7,10 @@
 ## Table of contents
 
 * [Installation](#installation)
-* [How to use](#how-to-use)
 * [Features](#features)
 * [Issues](#issues)
 * [Contributors](#contributors)
+* [Mailing List](#mailing-list)
 * [Creators](#creators)
 * [Copyright and license](#copyright-and-license)
 
@@ -55,6 +55,15 @@ Contributing to `Anoy` is simple. You can
 
 1. Fix an existing bug. Browse through the complete list [here](https://github.com/frictionle/anoy/issues).
 2. Have a feature idea? [share](https://github.com/frictionle/anoy/issues/new) it with us.
+
+## Mailing List
+
+This list is for development discussions like current issues and patch suggestions.
+
+Subscribe by sending an e-mail to: <frictionle-anoy+subscribe@googlegroups.com>
+To un-subscribe send an e-mail to: <frictionle-anoy+unsubscribe@googlegroups.com>
+
+Visit this group at: <https://groups.google.com/forum/#!forum/frictionle-anoy>
 
 ## Creators
 
