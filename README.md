@@ -7,7 +7,7 @@
 ## Example
 
 Sample document
-> Boggarts lavender robes, **Hermione Granger** Fantastic Beasts and Where to Find Them. Bee in your bonnet Hand of Glory elder wand, spectacles House Cup Bertie Bott’s Every Flavor Beans Impedimenta. Stunning spells tap-dancing **spider** Slytherin’s Heir mewing kittens Remus Lupin. Palominos scarlet train black robes, Metamorphimagus Niffler dead easy second bedroom. Padma and Parvati Sorting Hat Minister of Magic blue turban remember my last. Let us hit Accio.
+> Boggarts lavender robes, **Hermione Granger** Fantastic Beasts and Where to Find Them. Bee in your bonnet Hand of Glory elder wand, spectacles House Cup Bertie Bott’s Every Flavor Beans Impedimenta. Stunning spells tap-dancing **spider** Slytherin’s Heir mewing kittens Remus Lupin. Palominos scarlet train black robes, Metamorphimagus Niffler dead easy second bedroom. Padma and Parvati Sorting Hat Minister of Magic blue turban remember my last. Let us hit **Accio**.
 
 For training a data model we want to tag few segments of above document with some tags. For example, we want to tag
 
@@ -25,8 +25,6 @@ With **Anoy** you can do this with ease. You just need to
 3. Select text `spider` and apply tag `ANIMAL`.
 4. Select text `Accio` and apply tag `SPELL`.
 5. Export the document
-
-Exporting the document will give you a text file containing the original content along with XML tags applied to given segments.
 
 ## Table of contents
 
