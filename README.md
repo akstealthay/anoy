@@ -7,6 +7,7 @@
 ## Table of contents
 
 * [Installation](#installation)
+* [How to use](#how-to-use)
 * [Features](#features)
 * [Issues](#issues)
 * [Contributors](#contributors)
@@ -20,9 +21,20 @@ The procedure of installing `Anoy` is pretty simple. Just follow the steps below
 $ git clone https://github.com/frictionle/anoy.git
 ```
 
-Make `anoy` as your working directory and execute the script `start.sh`
+Edit following variables in `app/config.py`
+
+* `ANOY_HOME_FOLDER` : path of the directory where you want to store the application data and configuration settings.
+
+Make `anoy` as your working directory and execute the script `start.sh`. This script will install all the dependencies and will start the server on `localhost:5000` as well.
 ```
+$ cd anoy
+
 $ ./start.sh
+```
+
+Hit the following URL from any browser of your choice
+```
+http://localhost:5000/
 ```
 
 ## Features
