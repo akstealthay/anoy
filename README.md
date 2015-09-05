@@ -37,7 +37,7 @@ Have a bug or a feature request? You can find our existing and closed issues [he
 
 ## Contributors
 
-Anyone with basic knowledge of (jQuery)[https://jquery.com/] and [Python](https://www.python.org/) can contribute to `Anoy`.
+Anyone with basic knowledge of [jQuery](https://jquery.com/) and [Python](https://www.python.org/) can contribute to `Anoy`.
 
 Contributing to `Anoy` is simple. You can
 
