@@ -6,6 +6,10 @@
 
 echo "[SHELL] Setting up the execution environment"
 
+if [ ! -d ./fric ]; then
+    echo "[SHELL] Setting up new virtual environment"
+    virtualenv --clear --no-wheel fric
+fi
 source fric/bin/activate
 
 echo "[SHELL] Installing required python packages"
