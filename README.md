@@ -60,8 +60,8 @@ Contributing to `Anoy` is simple. You can
 
 This list is for development discussions like current issues and patch suggestions.
 
-Subscribe by sending an e-mail to: <frictionle-anoy+subscribe@googlegroups.com>
-To un-subscribe send an e-mail to: <frictionle-anoy+unsubscribe@googlegroups.com>
+Subscribe by sending an e-mail to: [frictionle-anoy+subscribe@googlegroups.com](mailto:frictionle-anoy+subscribe@googlegroups.com)
+To un-subscribe send an e-mail to: [frictionle-anoy+unsubscribe@googlegroups.com](mailto:frictionle-anoy+unsubscribe@googlegroups.com)
 
 Visit this group at: <https://groups.google.com/forum/#!forum/frictionle-anoy>
 
