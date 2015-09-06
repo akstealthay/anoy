@@ -61,7 +61,13 @@ $(document).ready(function() {
         });
     }
 
-    $('#add-profile-button').click(function() {
+    $('#profiles').change(function() {
+        loadProfile(this.value.trim());
+    });
+
+    $("#add-profile-form").submit(function(e) {
+        e.preventDefault();
+
         var profileName = $('#new-profile-entry').val().trim();
         if (!profileName) {
             alert('Please enter name of the profile');
@@ -79,7 +85,9 @@ $(document).ready(function() {
         });    
     });
 
-    $('#add-tag-button').click(function() {
+    $("#add-tag-form").submit(function(e) {
+        e.preventDefault();
+
         var tagName = $('#new-tag-entry').val().trim();
         var profileName = $('#current-profile-name').html().trim();
 
@@ -105,13 +113,11 @@ $(document).ready(function() {
         });
     });
 
-    $('#profiles').change(function() {
-        loadProfile(this.value.trim());
-    });
+    $("#load-file-form").submit(function(e) {
+        e.preventDefault();
 
-    $('#load_button').click(function() {
         /* Loads the file into #content region */
-        var filePath = $('#file_path').val();
+        var filePath = $('#file-path').val().trim();
 
         if (!filePath) {
             alert('Please enter a file path');
@@ -141,24 +147,6 @@ $(document).ready(function() {
     $("#menu-toggle").click(function(e) {
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
-    });
-
-    $('#new-tag-entry').keypress(function(e) {
-        if ( e.keyCode == 13 ) {
-            $('#add-tag-button').click();
-        }
-    });
-
-    $('#new-profile-entry').keypress(function(e) {
-        if ( e.keyCode == 13 ) {
-            $('#add-profile-button').click();
-        }
-    });
-
-    $('#file_path').keypress(function(e) {
-        if ( e.keyCode == 13 ) {
-            $('#load_button').click();
-        }
     });
 
     // init function

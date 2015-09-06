@@ -2,9 +2,9 @@
 
 {% block content %}
 <h4>Load file</h4>
-<div>
-    <input type="text" id="file_path" placeholder="Enter the file path here"/>
-    <input type="button" value="Load" id="load_button"/>
-</div>
+<form id="load-file-form" action="#">
+    <input type="text" id="file-path" placeholder="Enter the file path here"/>
+    <input type="submit" value="Load"/>
+</form>
 <div id="content"></div>
 {% endblock %}

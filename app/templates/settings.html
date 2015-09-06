@@ -2,17 +2,24 @@
     <div id="globals" style="display:none">
         <setting id="current_profile"></setting>
     </div>
-    <div class="sidebar-nav">        
+    <div class="sidebar-nav">
         <p>Load Profile</p>
         <select id="profiles" class="form-control"></select>
-        <a href="#" id="add-profile-button">Add Profile</a>
-        <input type="text" id="new-profile-entry" placeholder="Profile name here"/>
+
+        <form id="add-profile-form" action="#">
+            <input type="text" id="new-profile-entry" placeholder="Profile name here"/>
+            <input type="submit" value="Add Profile"/>
+        </form>
+
         <div class="profile-info">
             <p>Current Profile</p>
             <p id="current-profile-name"></p>
             <div id="tags"></div>
         </div>
-        <a href="#" id="add-tag-button">Add Tag</a>
-        <input type="text" id="new-tag-entry" placeholder="Enter tag here"/>
+
+        <form id="add-tag-form" action="#">
+            <input type="text" id="new-tag-entry" placeholder="Enter tag here"/>
+            <input type="submit" value="Add Tag"/>
+        </form>
     </div>
 </div>
