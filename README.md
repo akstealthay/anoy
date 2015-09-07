@@ -1,4 +1,4 @@
-# Anoy [![Build Status](https://travis-ci.org/frictionle/anoy.svg?branch=master)](https://travis-ci.org/frictionle/anoy)
+# Anoy [![Build Status](https://travis-ci.org/frictionle/anoy.svg?branch=master)](https://travis-ci.org/frictionle/anoy) [![Gitter](https://badges.gitter.im/gitterHQ/gitter.svg)](https://gitter.im/frictionle)
 
 ## Introduction
 
