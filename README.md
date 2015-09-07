@@ -1,4 +1,4 @@
-# Anoy
+# Anoy [![Build Status](https://travis-ci.org/frictionle/anoy.svg?branch=master)](https://travis-ci.org/frictionle/anoy)
 
 ## Introduction
 
