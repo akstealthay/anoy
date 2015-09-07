@@ -4,7 +4,7 @@ from app import app
 from app import config
 from app import loki
 
-from app.utils import FileIO
+from app.api import AppDataCore
 
 if not config.ANOY_HOME_FOLDER:
     loki.error('Please set config.ANOY_HOME_FOLDER in config.py')
@@ -21,7 +21,7 @@ filePath = os.path.join(config.ANOY_HOME_FOLDER, config.APP_DATA_FILE_NAME)
 
 if not os.path.exists(filePath):
     initAppData = {'current_profile':'default' ,'profile': {'default':[]}}
-    FileIO.dumpAppData(initAppData)
+    AppDataCore.dumpAppData(initAppData)
     loki.info('Dumping initial data %s', str(initAppData))
 
 # Start the server

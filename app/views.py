@@ -2,6 +2,8 @@ import json
 
 from app import app
 from flask import render_template, request, jsonify
+
+from api import TagCore, AppDataCore
 from utils import FileIO
 
 def setToList(obj):
@@ -16,68 +18,63 @@ def index():
 
 @app.route('/load', methods=['GET'])
 def readfile():
+    rawContent = None
     filePath = request.args.get('file_path')
-    readResponse = FileIO.readFile(filePath)
+    error, response = FileIO.readFile(filePath)
 
-    error = readResponse.get('error', None)
-    rawContent = readResponse.get('raw', None)
-
-    return jsonify(raw=rawContent, error=error)
-
-@app.route('/add/<profile>/<tag>', methods=['POST'])
-def addTag(profile, tag):
-    error, response = None, None
-    appData = FileIO.loadAppData()
-
-    # assert: `profile` should exist before adding tag to it
-    if not appData['profile'].has_key(profile):
-        # `profile` does not exist hence error
-        error = 'Profile %s does not exist, please create one.' % (profile)
-    else:
-        # `profile` does exists
-        tempSet = set(appData['profile'][profile])
-        tempSet.add(tag)
-        appData['profile'][profile] = list(tempSet)
-        FileIO.dumpAppData(appData)
-
-        response = 'Tag %s added successfully to profile %s' % (tag, profile)
+    if error:
+        response = None
 
     return jsonify(response=response, error=error)
 
-@app.route('/add/<profile>', methods=['POST'])
+@app.route('/act/<profile>/<tag>', methods=['POST'])
+def addTag(tag, profile):
+    error, response = None, None
+    action = request.form.get('action')
+    
+    if action == 'add':
+        error, response = TagCore.addTag(tag, profile)
+    elif action == 'delete':
+        error, response = TagCore.removeTag(tag, profile)
+    
+    if error:
+        response = None
+
+    return jsonify(response=response, error=error)
+
+@app.route('/act/<profile>', methods=['POST'])
 def addProfile(profile):
     error, response = None, None
-    appData = FileIO.loadAppData()
+    action = request.form.get('action')
+    
+    if action == 'add':
+        error, response = TagCore.addProfile(profile)
+    elif action == 'delete':
+        error, response = TagCore.removeProfile(profile)
 
-    # assert: `profile` should not exist before adding tag to it
-    if appData['profile'].has_key(profile):
-        # `profile` does exist hence error
-        error = 'Profile %s does exist' % (profile)
-    else:
-        appData['profile'][profile] = []
-        FileIO.dumpAppData(appData)
-
-        response = 'Profile %s created successfully' % (profile)
+    if error:
+        response = None
 
     return jsonify(response=response, error=error)
 
 @app.route('/data/<key>', methods=['GET'])
 def getAppData(key):
     error, response = None, None
-    appData = FileIO.loadAppData()
 
-    response = appData.get(key, None)
-
+    print 'In here'
+    response = AppDataCore.getAppDataForKey(key)
+    print 'res : ', response
     if response == None:
         error = 'Invalid data requested'
 
+    print response, error
     return jsonify(response=response, error=error)
 
 @app.route('/data/profile/<profileName>', methods=['GET'])
 def getProfileInfo(profileName):
     error, response = None, None
-    appData = FileIO.loadAppData()
-
+    
+    appData = AppDataCore.getAppData()
     response = appData['profile'].get(profileName, None)
 
     if response == None:

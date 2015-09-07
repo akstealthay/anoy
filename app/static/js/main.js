@@ -22,22 +22,20 @@ $(document).ready(function() {
     var loadProfileInfo = function(profileName) {
         showWaiting($('#tags'));
         // load tags
-        $.ajax({
-            url: '/data/profile/' + profileName.trim(),
-            success: function(response) {
-                if (response.error) {
-                    showError(response);
-                    removeWaiting($('#tags'));
-                    return;
-                }
-
-                var tags = response.response;
-                var listTags = $('<ul>').addClass('tags');
-                $.each(tags, function(index, tag) {
-                    listTags.append($('<li>').addClass('tag').html(tag));
-                });
-                $('#tags').html(listTags);
+        $.get( '/data/profile/' + profileName.trim(), function( response ) {
+        
+            if (response.error) {
+                showError(response);
+                removeWaiting($('#tags'));
+                return;
             }
+
+            var tags = response.response;
+            var listTags = $('<ul>').addClass('tags');
+            $.each(tags, function(index, tag) {
+                listTags.append($('<li>').addClass('tag').html(tag));
+            });
+            $('#tags').html(listTags);
         });
     }
 
@@ -49,15 +47,12 @@ $(document).ready(function() {
     }
 
     var loadProfileNames = function(callback) {
-        $.ajax({
-            url: '/data/profile',
-            success: function(result) {
-                if (result.error) {
-                    showError(result);
-                    return;
-                }
-                callback(result.response);
+        $.get( '/data/profile', function( result ) {
+            if (result.error) {
+                showError(result);
+                return;
             }
+            callback(result.response);
         });
     }
 
@@ -74,15 +69,16 @@ $(document).ready(function() {
             return;
         }
 
-        $.post( "/add/" + profileName, function( response ) {
+        $.post( "/act/" + profileName, {action:'add'},function( response ) {
             if (response.error) {
                 showError(response);
                 return;
             }
             $('#profiles').append($('<option>').html(profileName));
             $('#new-profile-entry').val(null);
-            alert('Profile added successfully');            
-        });    
+            alert('Profile added successfully');
+        });
+
     });
 
     $("#add-tag-form").submit(function(e) {
@@ -101,7 +97,7 @@ $(document).ready(function() {
             return;
         }
 
-        $.post( "/add/" + profileName + '/' + tagName, function( response ) {
+        $.post( "/act/" + profileName + '/' + tagName, {action:'add'},function( response ) {
             if (response.error) {
                 showError(response);
                 return;
@@ -126,18 +122,15 @@ $(document).ready(function() {
 
         showWaiting($('#content'));
 
-        $.ajax({
-            url: '/load',
-            data: {file_path:filePath},
-            success: function(result) {
-                if( result.error ) {
-                    showError(result);
-                    removeWaiting($('#content'));
-                    return;
-                }
-                $("#content").html(result.raw);
+        $.get( '/load', {file_path:filePath}, function( result ) {
+            if( result.error ) {
+                showError(result);
+                removeWaiting($('#content'));
+                return;
             }
+            $("#content").html(result.response.raw);
         });
+
     });
 
     $('#content').mouseup(function() {
