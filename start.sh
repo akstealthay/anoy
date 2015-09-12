@@ -19,7 +19,7 @@ pip install -r requirements.txt -q
 # Execution Phase
 #
 
-python run.py
+python run.py $@
 
 #
 # Breakdown Phase
