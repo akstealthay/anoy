@@ -18,5 +18,4 @@ def readFile(filePath):
     except IOError as e:        
         error = e.strerror
 
-    print error, response
     return error, response

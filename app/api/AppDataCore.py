@@ -3,6 +3,8 @@ import pickle
 
 from app import config
 
+from ..utils.logger import logger
+
 def getAppData():
     """
     Returns the complete application data
@@ -10,6 +12,7 @@ def getAppData():
     filePath = os.path.join(config.ANOY_HOME_FOLDER, config.APP_DATA_FILE_NAME)
 
     with open(filePath, 'rb') as appDataFile:
+        logger.info("Reading file %s", filePath)
         appData = pickle.load(appDataFile)
         return appData
 
@@ -20,6 +23,8 @@ def dumpAppData(appData):
     filePath = os.path.join(config.ANOY_HOME_FOLDER, config.APP_DATA_FILE_NAME)
 
     with open(filePath, 'wb') as appDataFile:
+        logger.info("Writing file %s", filePath)
+        logger.debug("App Data %s", appData)
         pickle.dump(appData, appDataFile)
 
 def getAppDataForKey(key):
@@ -33,5 +38,8 @@ def getAppDataForKey(key):
     >>> getAppDataForKey('profile')
 
     """
-    appData = getAppData()   
+    appData = getAppData()
+
+    logger.info("Reading key %s from app data", key)
+
     return appData.get(key, None)
