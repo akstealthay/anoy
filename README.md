@@ -30,6 +30,7 @@ With **Anoy** you can do this with ease. You just need to
 
 * [Installation](#installation)
 * [Features](#features)
+* [How to contribute](#how-to-contribute)
 * [Issues](#issues)
 * [Contributors](#contributors)
 * [Mailing List](#mailing-list)
@@ -63,7 +64,11 @@ http://localhost:5000/
 
 1. Tag text file
 
-The list is very small :-( but together we can make it big. Check out how you can [contribute](#contributors).
+The list is very small :-( but together we can make it big. Check out how you can [contribute](https://github.com/frictionle/anoy/wiki/How-to-contribute).
+
+## How to contribute
+
+There is a crisp documentation written on [How to contribute](https://github.com/frictionle/anoy/wiki/How-to-contribute); you can follow that and get started :smile:
 
 ## Issues
 
