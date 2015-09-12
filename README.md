@@ -68,6 +68,13 @@ The list is very small :-( but together we can make it big. Check out how you ca
 
 ## How to contribute
 
+Anyone with basic knowledge of [jQuery](https://jquery.com/) and [Python](https://www.python.org/) can contribute to `Anoy`.
+
+Contributing to `Anoy` is simple. You can
+
+1. Fix an existing bug. Browse through the complete list [here](https://github.com/frictionle/anoy/issues).
+2. Have a feature idea? [share](https://github.com/frictionle/anoy/issues/new) it with us.
+
 There is a crisp documentation written on [How to contribute](https://github.com/frictionle/anoy/wiki/How-to-contribute); you can follow that and get started :smile:
 
 ## Issues
@@ -76,12 +83,9 @@ Have a bug or a feature request? You can find our existing and closed issues [he
 
 ## Contributors
 
-Anyone with basic knowledge of [jQuery](https://jquery.com/) and [Python](https://www.python.org/) can contribute to `Anoy`.
+This is our own "Hall Of Fame" and these are some of the most awesome people who made this project possible.
 
-Contributing to `Anoy` is simple. You can
-
-1. Fix an existing bug. Browse through the complete list [here](https://github.com/frictionle/anoy/issues).
-2. Have a feature idea? [share](https://github.com/frictionle/anoy/issues/new) it with us.
+- [Arpit Bhayani](https://github.com/arpitbbhayani)
 
 ## Mailing List
 
