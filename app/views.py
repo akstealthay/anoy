@@ -60,10 +60,8 @@ def addProfile(profile):
 @app.route('/data/<key>', methods=['GET'])
 def getAppData(key):
     error, response = None, None
-
-    print 'In here'
     response = AppDataCore.getAppDataForKey(key)
-    print 'res : ', response
+
     if response == None:
         error = 'Invalid data requested'
 
@@ -73,7 +71,6 @@ def getAppData(key):
 @app.route('/data/profile/<profileName>', methods=['GET'])
 def getProfileInfo(profileName):
     error, response = None, None
-    
     appData = AppDataCore.getAppData()
     response = appData['profile'].get(profileName, None)
 
