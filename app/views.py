@@ -6,7 +6,7 @@ from flask import render_template, request, jsonify
 from api import TagCore, AppDataCore
 
 from utils import FileIO
-from ..utils.logger import logger
+from utils.logger import logger
 
 def setToList(obj):
     if isinstance(obj, set):
