@@ -1,5 +1,7 @@
 # Anoy [![Gitter](https://badges.gitter.im/gitterHQ/gitter.svg)](https://gitter.im/frictionle)
 
+> The tool does not export for now. The task of export is in progress and for now you can pick any issue from the Issue section of the repository
+
 ## Introduction
 
 `Anoy` is a tagging tool built using [python-flask](http://flask.pocoo.org/) that enables you to manually tag documents with custom tags and export them as XML documents. This is an ideal tool for a data team who wants to manually tag documents for training a data model.
