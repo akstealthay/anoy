@@ -1,6 +1,6 @@
 # Anoy [![Gitter](https://badges.gitter.im/gitterHQ/gitter.svg)](https://gitter.im/frictionle)
 
-> The tool does not export for now. The task of export is in progress and for now you can pick any issue from the Issue section of the repository
+> The tool does not export for now neither it can tag any test. The task of export and tagging is in progress and for now you can pick any issue from the Issue section of the repository
 
 ## Introduction
 
