@@ -1,16 +1,40 @@
+
+$(document).ready(function(){
+
+    // context.attach('#abc', [
+    //     {header: 'Compressed <a href="http://www.jqueryscript.net/menu/">Menu</a>'},
+
+    //     {text: 'Back', href: '#'},
+    //     {text: 'Reload', href: '#'},
+    //     {divider: true},
+    //     {text: 'Save As', href: '#'},
+    //     {text: 'Print', href: '#'},
+    //     {text: 'View Page Source', href: '#'},
+    //     {text: 'View Page Info', href: '#'},
+    //     {divider: true},
+    //     {text: 'Inspect Element', href: '#'},
+    //     {divider: true},
+    //     {
+    //         text: 'Disable This Menu', 
+    //         action: function(e) {
+    //             e.preventDefault();
+    //             context.destroy('html');
+    //             alert('html contextual menu destroyed!');
+    //         }
+    //     },
+    //     {
+    //         text: 'Donate', 
+    //         action: function(e) {
+    //             e.preventDefault();
+    //             $('#donate').submit();
+    //         }
+    //     }
+    // ]);
+});
+
 $(document).ready(function() {
 
-    var showError = function(response) {
-        alert(response.error);
-    };
-
-    var showWaiting = function(targetElement) {
-        targetElement.html('<i class="fa fa-spinner fa-spin"></i>');
-    }
-
-    var removeWaiting = function(targetElement) {
-        targetElement.html(null);
-    }
+    var tagapi       = new tagapiClass('#content');
 
     var loadInIDProfiles = function(result) {
         $('#profiles').html(null);
@@ -36,6 +60,8 @@ $(document).ready(function() {
                 listTags.append($('<li>').addClass('tag').html(tag));
             });
             $('#tags').html(listTags);
+
+            updateContextMenu();
         });
     }
 
@@ -64,20 +90,8 @@ $(document).ready(function() {
         e.preventDefault();
 
         var profileName = $('#new-profile-entry').val().trim();
-        if (!profileName) {
-            alert('Please enter name of the profile');
-            return;
-        }
 
-        $.post( "/act/" + profileName, {action:'add'},function( response ) {
-            if (response.error) {
-                showError(response);
-                return;
-            }
-            $('#profiles').append($('<option>').html(profileName));
-            $('#new-profile-entry').val(null);
-            alert('Profile added successfully');
-        });
+        tagapi.addProfile(profileName);
 
     });
 
@@ -87,26 +101,7 @@ $(document).ready(function() {
         var tagName = $('#new-tag-entry').val().trim();
         var profileName = $('#current-profile-name').html().trim();
 
-        if (!tagName) {
-            alert('Please enter appropriate value of the tag');
-            return;
-        }
-
-        if (!profileName) {
-            alert('No profile selected. Select a profile first.');
-            return;
-        }
-
-        $.post( "/act/" + profileName + '/' + tagName, {action:'add'},function( response ) {
-            if (response.error) {
-                showError(response);
-                return;
-            }
-
-            $('#new-tag-entry').val(null);
-            $('#tags ul').append($('<li>').addClass('tag').html(tagName));
-            alert('Tag ' + tagName + ' added successfully to profile ' + profileName);
-        });
+        tagapi.addTag(tagName, profileName);
     });
 
     $("#load-file-form").submit(function(e) {
@@ -128,13 +123,11 @@ $(document).ready(function() {
                 removeWaiting($('#content'));
                 return;
             }
-            $("#content").html(result.response.raw);
+
+            var fileContents = result.response.raw;
+            tagapi.setRawContent(fileContents);
         });
 
-    });
-
-    $('#content').mouseup(function() {
-        console.log('Mouse Up' + window.getSelection());
     });
 
     $("#menu-toggle").click(function(e) {
@@ -156,6 +149,14 @@ $(document).ready(function() {
             }
             var profileName = response.response;
             loadProfile(profileName);
+        });
+
+        context.init({
+            fadeSpeed: 100,
+            filter: function ($obj){},
+            above: 'auto',
+            preventDoubleContext: true,
+            compress: false
         });
     }
     init();
