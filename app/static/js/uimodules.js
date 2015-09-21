@@ -18,7 +18,17 @@ var updateContextMenu = function() {
     // Add it to context menu
     var listTags = [];
     $.each($('#tags ul').children(), function(index, value) {
-        listTags.push({text: value.textContent, href: '#'});
+        listTags.push({
+            text: value.textContent,
+            action: function(event) {
+                var range = window.getSelection().getRangeAt(0);
+                var selectionContents = range.extractContents();
+                var div = document.createElement("span");
+                div.style.color = "red";
+                div.appendChild(selectionContents);
+                range.insertNode(div);
+            }
+        });
     });
     context.attach('#content', listTags);
 };

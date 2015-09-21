@@ -1,35 +1,9 @@
 
 $(document).ready(function(){
-
-    // context.attach('#abc', [
-    //     {header: 'Compressed <a href="http://www.jqueryscript.net/menu/">Menu</a>'},
-
-    //     {text: 'Back', href: '#'},
-    //     {text: 'Reload', href: '#'},
-    //     {divider: true},
-    //     {text: 'Save As', href: '#'},
-    //     {text: 'Print', href: '#'},
-    //     {text: 'View Page Source', href: '#'},
-    //     {text: 'View Page Info', href: '#'},
-    //     {divider: true},
-    //     {text: 'Inspect Element', href: '#'},
-    //     {divider: true},
-    //     {
-    //         text: 'Disable This Menu', 
-    //         action: function(e) {
-    //             e.preventDefault();
-    //             context.destroy('html');
-    //             alert('html contextual menu destroyed!');
-    //         }
-    //     },
-    //     {
-    //         text: 'Donate', 
-    //         action: function(e) {
-    //             e.preventDefault();
-    //             $('#donate').submit();
-    //         }
-    //     }
-    // ]);
+    context.attach('span', [
+        {text: 'Add another tag', href: '#'},
+        {text: 'Delete all tags', href: '#'},
+    ]);
 });
 
 $(document).ready(function() {
