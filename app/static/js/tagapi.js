@@ -2,6 +2,10 @@ var tagapiClass = function(areaId) {
     
     var rawContent          = null;
 
+    this.getAreaId = function() {
+        return areaId;
+    };
+
     this.getRawContent = function() {
         return rawContent;
     };
