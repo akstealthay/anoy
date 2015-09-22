@@ -24,18 +24,34 @@ var uiModulesClass = function() {
             listTags.push({
                 text: value.textContent,
                 action: function(event) {
+                    var isAlreadyTagged = false;
                     var range = window.getSelection().getRangeAt(0);
+
+                    $.each(range.cloneContents().children, function(index, element) {
+                        if(element.tagName.toLowerCase() == 'span') {
+                            isAlreadyTagged = true;
+                        }
+                    });
+
+                    if ( isAlreadyTagged ) {
+                        alert('Data already tagged!');
+                        return;
+                    }
+
                     var selectionContents = range.extractContents();
                     
-                    if(selectionContents.textContent.length == 0 ) {
+                    if(selectionContents.textContent.length == 0) {
                         /* If nothing is selected then directly return */
                         return;
                     }
 
-                    var div = document.createElement("span");
-                    div.style.color = "red";
-                    div.appendChild(selectionContents);
-                    range.insertNode(div);
+                    var tagElement = $('<span>').attr('class', 'tag')
+                                            .attr('profile-name', $('current-profile-name').text())
+                                            .attr('tag-name', value.textContent)
+                                            .css('color', 'red');
+
+                    tagElement.append(selectionContents);
+                    range.insertNode(tagElement[0]);        // Pull out native DOM element
 
                     // Notify the save method
                 }
