@@ -2,14 +2,12 @@ var tagapiClass = function(areaId) {
     
     var rawContent          = null;
 
-    var renderEngineObject  = new renderEngineClass();
-
     this.getRawContent = function() {
         return rawContent;
     };
 
     this.setRawContent = function(content) {
-        rawContent = content.replace(/\n/g, '<br/>');;
+        rawContent = content.replace(/\n/g, '<br/>');
         $(areaId).html(rawContent);
     };
 

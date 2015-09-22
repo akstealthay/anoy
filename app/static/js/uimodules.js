@@ -10,10 +10,6 @@ var removeWaiting = function(targetElement) {
     targetElement.html(null);
 }
 
-var showDialog = function() {
-    $('body').bPopup();
-};
-
 var updateContextMenu = function() {
     // Add it to context menu
     var listTags = [];
@@ -23,6 +19,12 @@ var updateContextMenu = function() {
             action: function(event) {
                 var range = window.getSelection().getRangeAt(0);
                 var selectionContents = range.extractContents();
+                
+                if(selectionContents.textContent.length == 0 ) {
+                    /* If nothing is selected then directly return */
+                    return;
+                }
+
                 var div = document.createElement("span");
                 div.style.color = "red";
                 div.appendChild(selectionContents);
