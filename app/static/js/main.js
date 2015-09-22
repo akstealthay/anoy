@@ -9,6 +9,7 @@ $(document).ready(function(){
 $(document).ready(function() {
 
     var tagapi       = new tagapiClass('#content');
+    var uiModules    = new uiModulesClass();
 
     var loadInIDProfiles = function(result) {
         $('#profiles').html(null);
@@ -18,13 +19,13 @@ $(document).ready(function() {
     }
 
     var loadProfileInfo = function(profileName) {
-        showWaiting($('#tags'));
+        uiModules.showWaiting($('#tags'));
         // load tags
         $.get( '/data/profile/' + profileName.trim(), function( response ) {
         
             if (response.error) {
-                showError(response);
-                removeWaiting($('#tags'));
+                uiModules.showError(response);
+                uiModules.removeWaiting($('#tags'));
                 return;
             }
 
@@ -35,7 +36,7 @@ $(document).ready(function() {
             });
             $('#tags').html(listTags);
 
-            updateContextMenu();
+            uiModules.updateContextMenu();
         });
     }
 
@@ -49,7 +50,7 @@ $(document).ready(function() {
     var loadProfileNames = function(callback) {
         $.get( '/data/profile', function( result ) {
             if (result.error) {
-                showError(result);
+                uiModules.showError(result);
                 return;
             }
             callback(result.response);
@@ -89,12 +90,12 @@ $(document).ready(function() {
             return;
         }
 
-        showWaiting($('#content'));
+        uiModules.showWaiting($('#content'));
 
         $.get( '/load', {file_path:filePath}, function( result ) {
             if( result.error ) {
-                showError(result);
-                removeWaiting($('#content'));
+                uiModules.showError(result);
+                uiModules.removeWaiting($('#content'));
                 return;
             }
 
@@ -118,7 +119,7 @@ $(document).ready(function() {
 
         $.get('/data/current_profile', function(response) {
             if(response.error) {
-                showError(response);
+                uiModules.showError(response);
                 return;
             }
             var profileName = response.response;
