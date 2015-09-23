@@ -88,6 +88,7 @@ Have a bug or a feature request? You can find our existing and closed issues [he
 This is our own "Hall Of Fame" and these are some of the most awesome people who made this project possible.
 
 - [Arpit Bhayani](https://github.com/arpitbbhayani)
+- [Akshay Kanfade](https://github.com/akstealthay)
 
 ## Mailing List
 

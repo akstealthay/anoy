@@ -12,8 +12,8 @@ from ..utils.logger import logger
 class TagCoreTest(unittest.TestCase):
 
     def test_addTag(self):
-        newTag = 'New Tag 1'
-        newProfile = 'New Profile 1'
+        newTag = 'new_tag_1'
+        newProfile = 'new_profile_1'
 
         oldAppData = AppDataCore.getAppData()
 
@@ -42,7 +42,7 @@ class TagCoreTest(unittest.TestCase):
         assert newAppData['profile'].has_key(newProfile) is True
 
     def test_addProfile(self):
-        newProfile = 'New Profile 2'
+        newProfile = 'new_profile_2'
 
         oldAppData = AppDataCore.getAppData()
 
@@ -58,8 +58,8 @@ class TagCoreTest(unittest.TestCase):
         assert newAppData['profile'].has_key(newProfile) is True
 
     def test_removeTag(self):
-        tagName = 'New Tag 3'
-        profileName = 'New Profile 3'
+        tagName = 'new_tag_3'
+        profileName = 'new_profile_3'
 
         error, response = TagCore.addProfile(profileName)
 
@@ -84,7 +84,7 @@ class TagCoreTest(unittest.TestCase):
         assert tagName not in appData['profile'][profileName]
 
     def test_removeProfile(self):
-        profileName = 'New Profile 4'
+        profileName = 'new_profile_4'
 
         error, response = TagCore.addProfile(profileName)
 

@@ -3,6 +3,18 @@ import AppDataCore
 from ..utils import FileIO
 from ..utils.logger import logger
 
+def isNameValid(name):
+    """
+    Helps to check whether a profile name or a tag name 'name'
+    is valid or not.
+    """
+    error = None
+
+    if ' ' in name or not name.islower():
+        error = 'Invalid name %s' % (name)
+
+    return error
+
 def addTag(tag, profile):
     """
     Adds a new tag `tag` to profile `profile`
@@ -14,6 +26,14 @@ def addTag(tag, profile):
     logger.info('Adding tag %s in profile %s', tag, profile)
     error, response = None, None
     appData = AppDataCore.getAppData()
+
+    # Check if the entered tag name is valid
+    error = isNameValid(tag)
+    if error:
+        response = None
+        logger.error('Entered tag name %s contains a whitespace or an uppercase letter', tag)
+        error = 'Entered tag name %s contains either a whitespace or an uppercase letter' % (tag)
+        return error, response
 
     # assert: `profile` should exist before adding tag to it
     if not appData['profile'].has_key(profile):
@@ -82,6 +102,14 @@ def addProfile(profile):
     logger.info('Adding profile %s', profile)
     error, response = None, None
     appData = AppDataCore.getAppData()
+
+    # Check if the entered profile name is valid
+    error = isNameValid(profile)
+    if error:
+        response = None
+        logger.error('Entered profile name %s contains a whitespace or an uppercase letter', profile)
+        error = 'Entered profile name %s contains either a whitespace or an uppercase letter' % (profile)
+        return error, response
 
     # assert: `profile` should not exist before adding tag to it
     if appData['profile'].has_key(profile):
